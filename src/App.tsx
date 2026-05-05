@@ -63,7 +63,7 @@ export default function App() {
     async function init() {
       if (!authorizationId) {
         showError(
-          'Missing authorization_id parameter. Open this page from an OAuth authorization request (your project redirects here after visiting /oauth/authorize).',
+          'Missing authorization_id parameter. Open this page from an OAuth authorization request (your project should redirect to /auth/consent on this host after visiting /oauth/authorize).',
         )
         return
       }

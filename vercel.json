@@ -1,24 +1,3 @@
 {
-  "rewrites": [
-    {
-      "source": "/auth/consent/assets/:path*",
-      "destination": "/assets/:path*"
-    },
-    {
-      "source": "/auth/consent/favicon.svg",
-      "destination": "/favicon.svg"
-    },
-    {
-      "source": "/auth/consent/icons.svg",
-      "destination": "/icons.svg"
-    },
-    {
-      "source": "/auth/consent",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/auth/consent/",
-      "destination": "/index.html"
-    }
-  ]
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }

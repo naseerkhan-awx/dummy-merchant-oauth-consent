@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { supabase } from '../lib/supabaseClient'
+import './ConsentPage.css'
 
 type View = 'loading' | 'auth' | 'consent' | 'error'
 
@@ -151,124 +152,139 @@ export default function ConsentPage() {
   }
 
   return (
-    <div className="oauth-page">
-      <div className="oauth-card">
-        <div className="oauth-logo" aria-hidden="true">
-          A
+    <div className="consent-page">
+      <div className="consent-bg" aria-hidden="true" />
+
+      <header className="consent-nav">
+        <div className="consent-nav-inner">
+          <Link to="/" className="consent-brand">
+            <span className="consent-mark" aria-hidden="true" />
+            <span className="consent-brand-text">
+              <span className="consent-brand-name">Demo merchant</span>
+              <span className="consent-brand-tag">Airwallex sample</span>
+            </span>
+          </Link>
         </div>
+      </header>
 
-        {view === 'loading' && (
-          <p className="oauth-loading" role="status">
-            Loading…
-          </p>
-        )}
-
-        {view === 'auth' && (
-          <>
-            <h1>Sign in to continue</h1>
-            <p className="oauth-subtitle">
-              Use your account before authorizing the application that sent you here.
+      <div className="consent-layout">
+        <div className="consent-card">
+          {view === 'loading' && (
+            <p className="consent-loading" role="status">
+              Loading…
             </p>
-            <div className="oauth-segment" role="tablist" aria-label="Account access">
+          )}
+
+          {view === 'auth' && (
+            <>
+              <h1>Sign in to continue</h1>
+              <p className="consent-subtitle">
+                Use your account before authorizing the application that sent you here.
+              </p>
+              <div className="consent-segment" role="tablist" aria-label="Account access">
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={authMode === 'signin'}
+                  className={authMode === 'signin' ? 'active' : ''}
+                  onClick={() => {
+                    setAuthMode('signin')
+                    setLoginError(null)
+                  }}
+                >
+                  Sign in
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={authMode === 'signup'}
+                  className={authMode === 'signup' ? 'active' : ''}
+                  onClick={() => {
+                    setAuthMode('signup')
+                    setLoginError(null)
+                  }}
+                >
+                  Create account
+                </button>
+              </div>
+              {loginError && (
+                <div className="consent-alert consent-alert-error" role="alert">
+                  {loginError}
+                </div>
+              )}
+              <form onSubmit={handleAuthSubmit} className="consent-form">
+                <label htmlFor="email">Email</label>
+                <input
+                  id="email"
+                  type="email"
+                  autoComplete="email"
+                  placeholder="you@example.com"
+                  value={email}
+                  onChange={(ev) => setEmail(ev.target.value)}
+                />
+                <label htmlFor="password">Password</label>
+                <input
+                  id="password"
+                  type="password"
+                  autoComplete={authMode === 'signin' ? 'current-password' : 'new-password'}
+                  placeholder="••••••••"
+                  value={password}
+                  onChange={(ev) => setPassword(ev.target.value)}
+                />
+                <button type="submit" className="consent-btn consent-btn-primary" disabled={authSubmitting}>
+                  {authSubmitting ? 'Please wait…' : authMode === 'signin' ? 'Sign in' : 'Create account'}
+                </button>
+              </form>
+            </>
+          )}
+
+          {view === 'consent' && (
+            <>
+              <h1>Authorize application</h1>
+              <p className="consent-subtitle">Review the request and approve or deny access.</p>
+              <div className="consent-client-info">
+                <p className="consent-client-label">Requesting application</p>
+                <strong className="consent-client-name">{clientName}</strong>
+              </div>
+              {scopes.length > 0 && (
+                <div className="consent-scopes">
+                  <span className="consent-scopes-label">Requested permissions</span>
+                  <ul className="consent-scope-list">
+                    {scopes.map((s) => (
+                      <li key={s}>{s}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
               <button
                 type="button"
-                role="tab"
-                aria-selected={authMode === 'signin'}
-                className={authMode === 'signin' ? 'active' : ''}
-                onClick={() => {
-                  setAuthMode('signin')
-                  setLoginError(null)
-                }}
+                className="consent-btn consent-btn-primary"
+                disabled={consentSubmitting}
+                onClick={handleApprove}
               >
-                Sign in
+                Approve
               </button>
               <button
                 type="button"
-                role="tab"
-                aria-selected={authMode === 'signup'}
-                className={authMode === 'signup' ? 'active' : ''}
-                onClick={() => {
-                  setAuthMode('signup')
-                  setLoginError(null)
-                }}
+                className="consent-btn consent-btn-danger"
+                disabled={consentSubmitting}
+                onClick={handleDeny}
               >
-                Create account
+                Deny
               </button>
-            </div>
-            {loginError && (
-              <div className="oauth-alert oauth-alert-error" role="alert">
-                {loginError}
-              </div>
-            )}
-            <form onSubmit={handleAuthSubmit} className="oauth-form">
-              <label htmlFor="email">Email</label>
-              <input
-                id="email"
-                type="email"
-                autoComplete="email"
-                placeholder="you@example.com"
-                value={email}
-                onChange={(ev) => setEmail(ev.target.value)}
-              />
-              <label htmlFor="password">Password</label>
-              <input
-                id="password"
-                type="password"
-                autoComplete={authMode === 'signin' ? 'current-password' : 'new-password'}
-                placeholder="••••••••"
-                value={password}
-                onChange={(ev) => setPassword(ev.target.value)}
-              />
-              <button type="submit" className="oauth-btn oauth-btn-primary" disabled={authSubmitting}>
-                {authSubmitting ? 'Please wait…' : authMode === 'signin' ? 'Sign in' : 'Create account'}
-              </button>
-            </form>
-          </>
-        )}
+            </>
+          )}
 
-        {view === 'consent' && (
-          <>
-            <h1>Authorize application</h1>
-            <p className="oauth-subtitle">Review the request and approve or deny access.</p>
-            <div className="oauth-client-info">
-              <p className="oauth-client-label">Requesting application</p>
-              <strong className="oauth-client-name">{clientName}</strong>
-            </div>
-            {scopes.length > 0 && (
-              <div className="oauth-scopes">
-                <span className="oauth-scopes-label">Requested permissions</span>
-                <ul className="oauth-scope-list">
-                  {scopes.map((s) => (
-                    <li key={s}>{s}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
-            <button
-              type="button"
-              className="oauth-btn oauth-btn-primary"
-              disabled={consentSubmitting}
-              onClick={handleApprove}
-            >
-              Approve
-            </button>
-            <button
-              type="button"
-              className="oauth-btn oauth-btn-danger"
-              disabled={consentSubmitting}
-              onClick={handleDeny}
-            >
-              Deny
-            </button>
-          </>
-        )}
-
-        {view === 'error' && errorMessage && (
-          <>
-            <h1>Something went wrong</h1>
-            <p className="oauth-subtitle">{errorMessage}</p>
-          </>
-        )}
+          {view === 'error' && errorMessage && (
+            <>
+              <h1>Something went wrong</h1>
+              <p className="consent-subtitle">{errorMessage}</p>
+              <Link to="/" className="consent-btn consent-btn-primary">
+                Back to home
+              </Link>
+            </>
+          )}
+        </div>
       </div>
     </div>
   )

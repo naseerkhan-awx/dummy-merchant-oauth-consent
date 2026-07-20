@@ -1,0 +1,180 @@
+{
+    "id": "7f0f3e6c-a5e4-450f-bc4c-34cbe6b15977",
+    "protocol": null,
+    "capabilities": {
+        "payment": {
+            "handlers": [
+                {
+                    "id": "handler_airwallex_card",
+                    "name": "dev.acp.tokenized.card",
+                    "version": "2026-01-30",
+                    "spec": "https://example.com/payment-handlers/tokenized-card",
+                    "requiresDelegatePayment": true,
+                    "requiresPciCompliance": false,
+                    "psp": "airwallex",
+                    "configSchema": "https://example.com/schemas/card-config.json",
+                    "instrumentSchemas": [
+                        "https://example.com/schemas/card-instrument.json"
+                    ],
+                    "config": "{\"client_secret\":\"eyJraWQiOiJjNDRjODVkMDliMDc0NmNlYTIwZmI4NjZlYzI4YWY3ZSIsImFsZyI6IkhTMjU2In0.eyJ0eXBlIjoiY2xpZW50LXNlY3JldCIsImFjY291bnRfaWQiOiJiZjE1ZWI3ZC1iZDUwLTQ0MmYtYTliYS04Y2M4ZWVmZmE2Y2IiLCJpbnRlbnRfaWQiOiJpbnRfaGtzdHdqZDY1aGtnMWttMnNuciIsImJ1c2luZXNzX25hbWUiOiJKb2hucyBJbmMiLCJhcGlfdmVyc2lvbiI6IjIwMjQtMDYtMTQiLCJwYWRjIjoiSEsiLCJleHAiOjE3ODQyMDIzMTEsImlhdCI6MTc4NDE5ODcxMX0.xJR-Xxe983rlx-6Vxdwl2FeoUv2Co_LwmRuivccmOuo\"}",
+                    "displayName": null,
+                    "displayOrder": null
+                },
+                {
+                    "id": "seller_pm_mtd_hkst2q74bhkeu7ed01m",
+                    "name": "dev.acp.seller_backed.saved_card",
+                    "version": "2026-02-05",
+                    "spec": "https://acp.dev/handlers/seller_backed/saved_card",
+                    "requiresDelegatePayment": true,
+                    "requiresPciCompliance": false,
+                    "psp": "seller_managed",
+                    "configSchema": "https://acp.dev/schemas/handlers/seller_backed/saved_card/config.json",
+                    "instrumentSchemas": [
+                        "https://acp.dev/schemas/handlers/seller_backed/saved_card/instrument.json"
+                    ],
+                    "config": "{\"merchant_id\":\"bf15eb7d-bd50-442f-a9ba-8cc8eeffa6cb\",\"psp\":\"AIRWALLEX\",\"payment_method_id\":\"mtd_hkst2q74bhkeu7ed01m\",\"display_name\":\"Visa *0012\",\"display_metadata\":{\"brand\":\"visa\",\"last4\":\"0012\"},\"supports_3ds\":false,\"client_secret\":\"eyJraWQiOiJjNDRjODVkMDliMDc0NmNlYTIwZmI4NjZlYzI4YWY3ZSIsImFsZyI6IkhTMjU2In0.eyJ0eXBlIjoiY2xpZW50LXNlY3JldCIsImFjY291bnRfaWQiOiJiZjE1ZWI3ZC1iZDUwLTQ0MmYtYTliYS04Y2M4ZWVmZmE2Y2IiLCJpbnRlbnRfaWQiOiJpbnRfaGtzdHdqZDY1aGtnMWttMnNuciIsImJ1c2luZXNzX25hbWUiOiJKb2hucyBJbmMiLCJhcGlfdmVyc2lvbiI6IjIwMjQtMDYtMTQiLCJwYWRjIjoiSEsiLCJleHAiOjE3ODQyMDIzMTEsImlhdCI6MTc4NDE5ODcxMX0.xJR-Xxe983rlx-6Vxdwl2FeoUv2Co_LwmRuivccmOuo\"}",
+                    "displayName": null,
+                    "displayOrder": null
+                },
+                {
+                    "id": "seller_pm_mtd_hkst2q74bhkeu7ed01m",
+                    "name": "dev.acp.seller_backed.saved_card",
+                    "version": "2026-02-05",
+                    "spec": "https://acp.dev/handlers/seller_backed/saved_card",
+                    "requiresDelegatePayment": true,
+                    "requiresPciCompliance": false,
+                    "psp": "seller_managed",
+                    "configSchema": "https://acp.dev/schemas/handlers/seller_backed/saved_card/config.json",
+                    "instrumentSchemas": [
+                        "https://acp.dev/schemas/handlers/seller_backed/saved_card/instrument.json"
+                    ],
+                    "config": "{\"merchant_id\":\"bf15eb7d-bd50-442f-a9ba-8cc8eeffa6cb\",\"psp\":\"AIRWALLEX\",\"payment_method_id\":\"mtd_hkst2q74bhkeu7ed01m\",\"display_name\":\"Visa *0012\",\"display_metadata\":{\"brand\":\"visa\",\"last4\":\"0012\"},\"supports_3ds\":false}",
+                    "displayName": null,
+                    "displayOrder": null
+                }
+            ]
+        },
+        "interventions": null,
+        "extensions": []
+    },
+    "buyer": {
+        "firstName": "[redacted]",
+        "lastName": "[redacted]",
+        "fullName": "[redacted]",
+        "email": "[redacted]",
+        "phoneNumber": "637-718-0174",
+        "customerId": null,
+        "accountType": null,
+        "authenticationStatus": null,
+        "company": null,
+        "loyalty": null,
+        "taxExemption": null
+    },
+    "status": "ready_for_payment",
+    "currency": "USD",
+    "presentmentCurrency": null,
+    "exchangeRate": null,
+    "exchangeRateTimestamp": null,
+    "locale": null,
+    "timezone": null,
+    "lineItems": [
+        {
+            "id": "2",
+            "item": {
+                "id": "2",
+                "name": "",
+                "unitAmount": 0
+            },
+            "quantity": 1,
+            "name": null,
+            "description": null,
+            "images": [],
+            "unitAmount": null,
+            "disclosures": [],
+            "customAttributes": [],
+            "marketplaceSellerDetails": null,
+            "productId": null,
+            "sku": null,
+            "variantId": null,
+            "category": null,
+            "tags": [],
+            "weight": null,
+            "dimensions": null,
+            "availabilityStatus": null,
+            "availableQuantity": null,
+            "maxQuantityPerOrder": null,
+            "fulfillableOn": null,
+            "variantOptions": [],
+            "discountDetails": [],
+            "taxExempt": null,
+            "taxExemptionReason": null,
+            "parentId": null,
+            "totals": [
+                {
+                    "type": "subtotal",
+                    "displayText": "",
+                    "amount": 0,
+                    "presentmentAmount": null,
+                    "description": null,
+                    "breakdown": []
+                }
+            ]
+        }
+    ],
+    "fulfillmentDetails": {
+        "name": "Jane Merchant",
+        "phoneNumber": "+1 415 555 0100",
+        "email": "[redacted]",
+        "address": {
+            "name": "[redacted]",
+            "lineOne": "123 Market Street",
+            "lineTwo": "Suite 400",
+            "city": "[redacted]",
+            "state": "[redacted]",
+            "country": "[redacted]",
+            "postalCode": "[redacted]",
+            "company": null
+        }
+    },
+    "fulfillmentOptions": [],
+    "selectedFulfillmentOptions": [],
+    "fulfillmentGroups": [],
+    "totals": [
+        {
+            "type": "total",
+            "displayText": "",
+            "amount": 8300,
+            "presentmentAmount": null,
+            "description": null,
+            "breakdown": []
+        }
+    ],
+    "messages": [],
+    "links": [],
+    "authenticationMetadata": null,
+    "createdAt": null,
+    "updatedAt": null,
+    "expiresAt": null,
+    "order": {
+        "id": "66096438-e432-4979-893c-9b3abb5149fa",
+        "checkoutSessionId": "",
+        "orderNumber": null,
+        "permalinkUrl": "",
+        "status": null,
+        "estimatedDelivery": null,
+        "confirmation": null,
+        "support": null,
+        "type": null,
+        "clientReferenceId": null,
+        "lineItems": [],
+        "fulfillments": [],
+        "adjustments": [],
+        "totals": []
+    },
+    "continueUrl": null,
+    "metadata": {},
+    "quoteId": null,
+    "quoteExpiresAt": null,
+    "discounts": null,
+    "marketingConsentOptions": []
+}

@@ -41,12 +41,19 @@ a.consent-btn-profile-ghost {
   max-width: 400px;
 }
 
+.profile-card--wide {
+  max-width: 520px;
+  text-align: left;
+}
+
 .profile-title {
   margin-bottom: 0.35rem !important;
+  text-align: center;
 }
 
 .profile-subtitle {
   margin-bottom: 1.75rem !important;
+  text-align: center;
 }
 
 .profile-block {
@@ -54,6 +61,105 @@ a.consent-btn-profile-ghost {
   flex-direction: column;
   align-items: center;
   gap: 1.25rem;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--dm-border, rgba(255, 255, 255, 0.09));
+}
+
+.profile-section {
+  margin-top: 1.5rem;
+}
+
+.profile-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.profile-section-title {
+  margin: 0;
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.profile-add-btn {
+  flex-shrink: 0;
+}
+
+.profile-muted {
+  margin: 0;
+  color: var(--dm-muted, #9aa3b5);
+  font-size: 0.9375rem;
+}
+
+.profile-error {
+  margin: 0.75rem 0 0;
+  color: #ff9b8a;
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+
+.profile-card-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.profile-card-item {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 0.75rem 1rem;
+  align-items: center;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--dm-border, rgba(255, 255, 255, 0.09));
+}
+
+.profile-card-brand {
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+.profile-card-number {
+  font-family: ui-monospace, 'Cascadia Code', Menlo, monospace;
+  font-size: 0.875rem;
+  color: var(--dm-muted, #9aa3b5);
+}
+
+.profile-card-expiry {
+  font-size: 0.875rem;
+  color: var(--dm-muted, #9aa3b5);
+}
+
+.profile-card-element {
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.profile-card-element iframe {
+  min-height: 48px !important;
+}
+
+.profile-form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+
+.profile-form-actions .consent-btn {
+  width: auto;
+  margin-bottom: 0;
 }
 
 .profile-avatar {

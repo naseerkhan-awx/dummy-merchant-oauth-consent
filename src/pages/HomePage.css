@@ -322,6 +322,51 @@
   color: var(--dm-muted);
 }
 
+.demo-merchant-book-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.25rem;
+}
+
+.demo-merchant-book-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: 0.85rem;
+  border-radius: 16px;
+  background: var(--dm-surface);
+  border: 1px solid var(--dm-border);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+
+.demo-merchant-book-cover {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.demo-merchant-book-title {
+  margin: 0;
+  font-size: 0.975rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.demo-merchant-book-price {
+  margin: 0;
+  margin-top: auto;
+  color: #ffcbb9;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
 .demo-merchant-cards {
   list-style: none;
   margin: 0;
